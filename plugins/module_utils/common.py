@@ -25,7 +25,7 @@ def object_changed(superset, subset, ignore=None):
                     if i >= len(value2) or object_changed(value2[i], value[i]):
                         changed_keys.append((key, superset.get(key), subset[key]))
                 else:
-                    if value[i] != value2[i]:
+                    if i < len(value2) and value[i] != value2[i]:
                         changed_keys.append((key, superset.get(key), subset[key]))
         elif type(value) == dict:
             if object_changed(value2, value):
